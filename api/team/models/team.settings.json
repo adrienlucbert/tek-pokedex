@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teams",
+  "info": {
+    "name": "Team"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "users": {
+      "plugin": "users-permissions",
+      "collection": "user"
+    },
+    "achievements": {
+      "collection": "achievement"
+    }
+  }
+}

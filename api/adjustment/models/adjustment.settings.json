@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "adjustments",
+  "info": {
+    "name": "Adjustment"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "team": {
+      "model": "team"
+    },
+    "points": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/adjustments",
+      "handler": "adjustment.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/adjustments/count",
+      "handler": "adjustment.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/adjustments/:id",
+      "handler": "adjustment.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/adjustments",
+      "handler": "adjustment.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/adjustments/:id",
+      "handler": "adjustment.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/adjustments/:id",
+      "handler": "adjustment.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

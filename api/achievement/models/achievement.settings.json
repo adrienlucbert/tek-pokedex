@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "achievements",
+  "info": {
+    "name": "Achievement"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "challenge": {
+      "model": "challenge"
+    },
+    "users": {
+      "plugin": "users-permissions",
+      "collection": "user"
+    },
+    "team": {
+      "model": "team"
+    }
+  }
+}

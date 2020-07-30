@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "challenges",
+  "info": {
+    "name": "Challenge"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "points": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    }
+  }
+}
