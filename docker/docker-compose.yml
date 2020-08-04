@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  strapi:
+    image: strapi/strapi
+    volumes:
+      - './../api:/usr/server'
+    ports:
+      - '1337:1337'
+    restart: always
+
+  reactjs:
+    tty: true
+    build:
+      context: ../client/
+      dockerfile: Dockerfile
+    depends_on:
+      - strapi
+    ports:
+      - '3000:3000'
+    volumes:
+      - './../client:/usr/client'
+      - '/app/node_module'
+    command: npm start
+    tty: true
