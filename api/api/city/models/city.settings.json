@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cities",
+  "info": {
+    "name": "city"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "teams": {
+      "via": "city",
+      "collection": "team"
+    }
+  }
+}

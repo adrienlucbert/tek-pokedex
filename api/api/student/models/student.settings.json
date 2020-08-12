@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "students",
+  "info": {
+    "name": "Student"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "login": {
+      "type": "string"
+    },
+    "team": {
+      "via": "students",
+      "model": "team"
+    },
+    "achievements": {
+      "via": "students",
+      "collection": "achievement"
+    }
+  }
+}

@@ -10,7 +10,8 @@
   },
   "attributes": {
     "team": {
-      "model": "team"
+      "model": "team",
+      "via": "adjustments"
     },
     "points": {
       "type": "integer",
