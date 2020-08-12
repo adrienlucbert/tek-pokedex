@@ -1,0 +1,63 @@
+<template>
+    <div class="top-bar">
+        <bar>
+            <div class="top-bar-left">
+                <bar-item>
+                    <router-link to="/ranking">Ranking</router-link>
+                </bar-item>
+                <bar-item>
+                    <router-link to="/challenges">Challenges</router-link>
+                </bar-item>
+            </div>
+            <div class="top-bar-middle">
+                <bar-item class="top-bar-title">
+                    <span class="hashtag">#</span>CPool2020
+                </bar-item>
+            </div>
+            <div class="top-bar-right">
+                <bar-item>
+                    <router-link to="/login">Login</router-link>
+                </bar-item>
+            </div>
+        </bar>
+    </div>
+</template>
+
+<script>
+import Bar from '@/components/Bar.vue'
+import BarItem from '@/components/BarItem.vue'
+
+export default {
+    name: 'TopBar',
+    components: {
+        Bar,
+        BarItem
+    }
+}
+</script>
+
+<style scoped>
+.bar {
+    display: flex;
+}
+
+.top-bar-left, .top-bar-right {
+    flex: 1;
+}
+
+.top-bar-left {
+    text-align: left;
+}
+
+.top-bar-right {
+    text-align: right;
+}
+
+.top-bar-title {
+    font-weight: 600;
+}
+
+.hashtag {
+    color: #0766AD;
+}
+</style>
