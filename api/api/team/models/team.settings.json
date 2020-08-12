@@ -14,12 +14,21 @@
       "required": true,
       "unique": true
     },
-    "users": {
-      "plugin": "users-permissions",
-      "collection": "user"
+    "city": {
+      "model": "city",
+      "via": "teams"
+    },
+    "students": {
+      "collection": "student",
+      "via": "team"
     },
     "achievements": {
+      "via": "team",
       "collection": "achievement"
+    },
+    "adjustments": {
+      "via": "team",
+      "collection": "adjustment"
     }
   }
 }
