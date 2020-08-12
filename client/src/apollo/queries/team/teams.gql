@@ -1,0 +1,14 @@
+query Teams {
+  teams {
+    id,
+    name,
+    city {
+      id,
+      name
+    },
+    students {
+      id,
+      login
+    }
+  }
+}
