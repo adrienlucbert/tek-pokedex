@@ -1,8 +1,7 @@
 export default {
     state: {
         id: undefined,
-        username: undefined,
-        teamId: undefined
+        username: undefined
     },
     getters: {
         username(state) {
