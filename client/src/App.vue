@@ -25,16 +25,26 @@ export default {
 /* VARIABLES */
 
 :root {
-    --l-hdr-background: #e4e4e4;
+    --l-secondary: #0766AD;
+    
+    --hdr-font: Montserrat, 'sans-serif';
+    --l-hdr-background: #ffffff;
     --l-hdr-foreground: #171717;
     --l-hdr-focus-background: var(--l-hdr-foreground);
     --l-hdr-focus-foreground: var(--l-hdr-background);
+
+    --body-font: Montserrat, 'sans-serif';
+    --l-body-background: #f7f7f7;
+    --l-body-foreground: #171717;
 }
 
 /* GENERAL STYLES */
 
 body {
     margin: 0;
+    background: var(--l-body-background);
+    color: var(--l-body-foreground);
+    font-family: var(--body-font);
 }
 
 * {

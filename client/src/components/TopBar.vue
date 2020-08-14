@@ -2,21 +2,36 @@
     <div class="top-bar">
         <bar>
             <div class="top-bar-left">
-                <bar-item>
+                <bar-item
+                    :isActive="$route.path == '/ranking'"
+                >
                     <router-link to="/ranking">Ranking</router-link>
                 </bar-item>
-                <bar-item>
+                <bar-item
+                    :isActive="$route.path == '/challenges'"
+                >
                     <router-link to="/challenges">Challenges</router-link>
                 </bar-item>
             </div>
             <div class="top-bar-middle">
                 <bar-item class="top-bar-title">
-                    <span class="hashtag">#</span>CPool2020
+                    <router-link to="/">
+                        <span class="hashtag">#</span>CPool2020
+                    </router-link>
                 </bar-item>
             </div>
             <div class="top-bar-right">
-                <bar-item>
+                <bar-item
+                    :isActive="$route.path == '/login' || $route.path == '/'"
+                    v-if="!$store.getters.isLoggedIn"
+                >
                     <router-link to="/login">Login</router-link>
+                </bar-item>
+                <bar-item
+                    :isActive="$route.path == '/logout'"
+                    v-else
+                >
+                    <router-link to="/logout">Logout</router-link>
                 </bar-item>
             </div>
         </bar>
@@ -58,6 +73,6 @@ export default {
 }
 
 .hashtag {
-    color: #0766AD;
+    color: var(--l-secondary);
 }
 </style>

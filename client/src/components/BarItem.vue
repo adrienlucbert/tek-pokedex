@@ -1,12 +1,20 @@
 <template>
-    <div class="bar-item">
+    <div :class="`bar-item ${isActive ? 'active' : ''}`" @click="blur">
         <slot/>
     </div>
 </template>
 
 <script>
 export default {
-   name: 'BarItem' 
+    name: 'BarItem',
+    props: {
+        isActive: Boolean
+    },
+    methods: {
+        blur({ target }) {
+            target.blur()
+        }
+    }
 }
 </script>
 
@@ -17,19 +25,18 @@ export default {
     text-align: center;
 }
 
-.bar-item a {
+.bar-item > * {
+    color: inherit;
+    display: inline-block;
+    padding: .4em 1.5em;
     transition: all .1s ease-in-out;
 }
 
-.bar-item a:hover {
-    background: var(--l-hdr-focus-background);
-    color: var(--l-hdr-focus-foreground);
+.bar-item a {
+    text-decoration: none;    
 }
 
-.bar-item a {
-    color: inherit;
-    text-decoration: none;    
-    display: inline-block;
-    padding: .2em 1.5em;
+.bar-item a:hover, .bar-item a:focus, .bar-item.active a {
+    box-shadow: 0 -3px inset var(--l-secondary);
 }
 </style>
