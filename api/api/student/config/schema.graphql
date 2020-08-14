@@ -1,0 +1,20 @@
+module.exports = {
+  definition: ``,
+  query: `
+    studentByLogin(city: ID!, login: String!): Student
+  `,
+  resolver: {
+    Query: {
+      studentByLogin: {
+        description: 'Returns a single student by login and city',
+        resolverOf: 'application::student.student.findOne',
+        resolver: async (obj, options, { context }) => {
+          return await strapi.api.student.services.student.findOne({
+            "team.city.id": context.params._city,
+            login: context.params._login
+          })
+        }
+      }
+    }
+  }
+}
