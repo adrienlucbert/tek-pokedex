@@ -1,28 +1,31 @@
 <template>
     <div class="ranking-page">
-        {{ teams }}
+        <city-leaderboard/>
+        <team-leaderboard/>
     </div>
 </template>
 
 <script>
-import teamsQuery from '@/apollo/queries/team/teams.gql'
+import CityLeaderboard from '@/components/CityLeaderboard'
+import TeamLeaderboard from '@/components/TeamLeaderboard'
 
 export default {
     name: 'ranking-page',
+    components: {
+        CityLeaderboard,
+        TeamLeaderboard
+    },
     data() {
         return {
-            teams: []
         }
     },
     apollo: {
-        teams: {
-            prefetch: true,
-            query: teamsQuery
-        }
     }
 }
 </script>
 
 <style scoped>
-
+.city-leaderboard {
+    margin-bottom: 3em;
+}
 </style>

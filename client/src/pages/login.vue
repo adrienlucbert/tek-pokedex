@@ -22,20 +22,20 @@
                         {{ city.name }}
                     </option>
                 </select>
-                    <label for="username">Username</label>
-                    <input
-                        autofocus 
-                        required 
-                        type="text" 
-                        name="username"
-                        id="username"
-                    />
-                    <input type="submit" value="LOGIN"/>
-                    <p id="login-info">
-                        <fa icon="info-circle" :style="{ color: '#171717' }"/>
-                        Login with you Epitech login (email address).
-                    </p>
-            </form>
+                <label for="username">Username</label>
+                <input
+                    autofocus 
+                    required 
+                    type="text" 
+                    name="username"
+                    id="username"
+                />
+                <input type="submit" value="LOGIN"/>
+                <p id="login-info">
+                    <fa icon="info-circle" :style="{ color: '#171717' }"/>
+                    Login with you Epitech login (email address).
+                </p>
+        </form>
         </center>
     </div>
 </template>
@@ -110,7 +110,6 @@ export default {
 <style scoped>
 form {
     text-align: left;
-    margin-top: 3em;
     background: white;
     box-shadow: 2px 2px 6px rgba(75, 75, 75, .3);
     max-width: 400px;
