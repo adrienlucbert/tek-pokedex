@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="biding">
+        <div class="binding">
 
         </div>
         <div class="right-panel">
@@ -59,6 +59,7 @@ export default {
     --bg-secondary-color: #DF1A55;
     --shadow-color: #471557;
     margin: 0 3em;
+    position: absolute;
 }
 
 .left-panel {
@@ -390,6 +391,41 @@ export default {
 
         }
     }
+}
+
+.binding {
+    position: absolute;
+    height: 700px;
+    width: 50px;
+    left: 500px;
+    top: 0;
+    background: linear-gradient(90deg,
+        #FD1954 20%,
+        #FA8F75 20%,
+        #FA8F75 40%,
+        #FD1854 40%,
+        #FD1854 60%,
+        #481557 60%
+    );
+}
+
+.binding::after, .binding::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 50px;
+    height: 25px;
+    border-radius: 50px/25px;
+    background-color: var(--shadow-color);
+}
+
+.binding::before {
+    top: calc(-25px / 2);
+    background: inherit;
+}
+
+.binding::after {
+    bottom: calc(-25px / 2);
 }
 
 </style>
