@@ -53,6 +53,10 @@ export default {
 
 <style scoped>
 .bar {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
     display: flex;
 }
 

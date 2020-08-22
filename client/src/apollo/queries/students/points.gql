@@ -1,19 +1,21 @@
-query TeamsPoints {
-  teams {
+query studentAchievements($id: ID!) {
+  student(id: $id) {
     id,
-    name,
     achievements {
       id,
       challenge {
         id,
         name,
+        description,
         points
-      }
+      },
+      created_at
     },
     adjustments {
       id,
       points,
-      description
+      description,
+      created_at
     }
   }
 }

@@ -52,6 +52,7 @@ body {
 }
 
 main {
+    margin-top: 2.2em;
     padding-top: 3em;
 }
 

@@ -72,7 +72,7 @@ export default {
             this.status.message = message
         },
         redirect() {
-            this.$router.push('challenges')
+            this.$router.push('ranking')
         },
         login(e) {
             e.preventDefault()

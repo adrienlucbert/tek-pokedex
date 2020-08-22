@@ -15,8 +15,8 @@ export default {
         ownCity(state) {
             return state.city
         },
-        ownLogin(state) {
-            return state.login
+        own(state) {
+            return state
         }
     },
     mutations: {
