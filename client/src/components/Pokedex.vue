@@ -39,10 +39,38 @@
             </div>
         </div>
         <div class="binding">
-
         </div>
         <div class="right-panel">
-
+            <div class="upper-part">
+                <div class="corner"></div>
+            </div>
+            <div class="screen"></div>
+            <table class="numpad">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <div class="rect-buttons-white">
+                <div class="rect-button"></div>
+                <div class="rect-button"></div>
+            </div>
+            <div class="speakers"></div>
+            <div class="lens yellow-lens"></div>
+            <div class="rect-buttons-black">
+                <div class="rect-button"></div>
+                <div class="rect-button"></div>
+            </div>
         </div>
     </div>
 </template>
@@ -62,6 +90,28 @@ export default {
     position: absolute;
 }
 
+.blue-lens {
+    --lens-color: rgb(30, 226, 226);
+}
+
+.red-lens {
+    --lens-color: rgb(255, 0, 0);
+}
+
+.yellow-lens {
+    --lens-color: rgb(253, 253, 0);
+}
+
+.green-lens {
+    --lens-color: rgb(30, 226, 63);
+}
+
+.lens {
+    position: absolute;
+    border-radius: 90px;
+    background: radial-gradient(circle, #fcfcfc 0%, var(--lens-color) 75%);
+}
+
 .left-panel {
     z-index: 1;
     background-color: var(--bg-main-color);
@@ -71,28 +121,6 @@ export default {
     position: relative;
     box-shadow: 0 20px 0 0 var(--shadow-color);
     overflow: hidden;
-
-    .blue-lens {
-        --lens-color: rgb(30, 226, 226);
-    }
-
-    .red-lens {
-        --lens-color: rgb(255, 0, 0);
-    }
-
-    .yellow-lens {
-        --lens-color: rgb(253, 253, 0);
-    }
-
-    .green-lens {
-        --lens-color: rgb(30, 226, 63);
-    }
-
-    .lens {
-        position: absolute;
-        border-radius: 90px;
-        background: radial-gradient(circle, #fcfcfc 0%, var(--lens-color) 75%);
-    }
 
     .top-bar {
         z-index: 2;
@@ -308,6 +336,7 @@ export default {
             height: 42px;
             border-radius: 8px;
             background-color: #ffff5c;
+            box-shadow: 0 5px 0 0 inset rgba(100, 100, 100, .2);
         }
 
         .cross-button {
@@ -398,7 +427,7 @@ export default {
     height: 700px;
     width: 50px;
     left: 500px;
-    top: 0;
+    top: 5px;
     background: linear-gradient(90deg,
         #FD1954 20%,
         #FA8F75 20%,
@@ -426,6 +455,132 @@ export default {
 
 .binding::after {
     bottom: calc(-25px / 2);
+}
+
+.right-panel {
+    background-color: var(--bg-secondary-color);
+    left: calc(500px + 50px);
+    top: 175px;
+    width: 500px;
+    height: calc(700px - 175px);
+    border-radius: 0 0 30px 3px;
+    position: absolute;
+    box-shadow: 0 20px 0 0 var(--shadow-color);
+
+    .upper-part {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: calc(100% - 150px - 150px);
+        height: 100px;
+        background: inherit;
+        border-radius: 3px 0 0 0;
+
+        .corner {
+            position: absolute;
+            left: 100%;
+            top: 0px;
+            width: 150px;
+            height: 100px;
+            background: linear-gradient(35deg,
+                var(--bg-secondary-color) 50%,
+                transparent 50.5%
+            );
+        }
+    }
+
+    .screen {
+        position: absolute;
+        left: 22px;
+        top: 50px;
+        width: calc(100% - (22px * 2));
+        height: 100px;
+        background: #0C1A57;
+        border-radius: 15px;
+        box-shadow: 0 10px 0 0 inset rgba(100, 100, 100, .2);
+    }
+
+    .numpad {
+        position: absolute;
+        top: calc(50px + 100px + 22px);
+        left: 22px;
+        width: calc(100% - (22px * 2));
+        border-collapse: collapse;
+        box-shadow: 2px 6px 0 0 var(--shadow-color);
+        border-radius: 10px;
+        overflow: hidden;
+
+        td {
+            background: #00AAF7;
+            box-shadow: 0 6px 0 0 inset #36D3ED;
+            border: 6px solid #0091D0;
+            height: 50px;
+        }
+    }
+
+    .rect-buttons-white {
+        position: absolute;
+        left: 22px;
+        top: 330px;
+
+        .rect-button {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 150px;
+            height: 40px;
+            background: #F3F4E8;
+            border-radius: 10px;
+            box-shadow: 4px 6px 0 0 var(--shadow-color);
+        }
+
+        .rect-button:last-of-type {
+            left: 170px;
+        }
+    }
+
+    .speakers {
+        position: absolute;
+        right: 22px;
+        top: 300px;
+        background: #2f2f3f;
+        width: 45px;
+        height: 10px;
+        border-radius: 10px;
+        box-shadow: -55px 0 0 0 #2f2f3f;
+    }
+
+    .lens {
+        position: absolute;
+        right: 22px;
+        top: 330px;
+        width: 55px;
+        height: 55px;
+        border: 8px solid #2f2f3f;
+        background-position: -3px -3px;
+        box-shadow: -5px -5px 0 0 inset rgba(100, 100, 100, 0.2);
+    }
+
+    .rect-buttons-black {
+        position: absolute;
+        left: 22px;
+        bottom: 22px;
+
+        .rect-button {
+            position: absolute;
+            left: 0;
+            bottom: 11px;
+            background: #0C1A57;
+            height: 70px;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 10px 0 0 inset rgba(100, 100, 100, .2);
+        }
+
+        .rect-button:last-of-type {
+            left: 240px;
+        }
+    }
 }
 
 </style>
