@@ -1,0 +1,10 @@
+query teamAchievements($id: ID!) {
+  team (id: $id) {
+    achievements {
+      id,
+      challenge {
+        id
+      }
+    }
+  }
+}

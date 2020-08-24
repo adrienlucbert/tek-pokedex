@@ -18,6 +18,22 @@
                     <div class="light"></div>
                 </div>
                 <div class="screen blue-screen">
+                    <div
+                        class="challenge-image"
+                        v-if="currentChallenge"
+                    >
+                        <img
+                            v-if="currentChallenge.complete"
+                            :src="currentChallenge.pokemon.sprites.animated"
+                            :alt="currentChallenge.pokemon.name"
+                        />
+                        <img
+                            v-else
+                            class="locked"
+                            :src="currentChallenge.pokemon.sprites.normal"
+                            alt="undiscovered pokemon"
+                        />
+                    </div>
                 </div>
                 <div class="circle-button"></div>
                 <div class="speakers"></div>
@@ -30,10 +46,10 @@
                 </div>
                 <div class="rect-button"></div>
                 <div class="cross-button">
-                    <div class="arrow up-arrow"></div>
+                    <div class="arrow up-arrow" @click="prevChallenge"></div>
                     <div class="arrow left-arrow"></div>
                     <div class="middle-circle"></div>
-                    <div class="arrow down-arrow"></div>
+                    <div class="arrow down-arrow" @click="nextChallenge"></div>
                     <div class="arrow right-arrow"></div>
                 </div>
             </div>
@@ -44,7 +60,15 @@
             <div class="upper-part">
                 <div class="corner"></div>
             </div>
-            <div class="screen"></div>
+            <div class="screen">
+                <div
+                    class="challenge-desc"
+                    v-if="currentChallenge"
+                >
+                    <div class="name">{{ currentChallenge.name }}</div>
+                    <div class="desc">{{ currentChallenge.description }}</div>
+                </div>
+            </div>
             <table class="numpad">
                 <tr>
                     <td></td>
@@ -68,8 +92,22 @@
             <div class="speakers"></div>
             <div class="lens yellow-lens"></div>
             <div class="rect-buttons-black">
-                <div class="rect-button"></div>
-                <div class="rect-button"></div>
+                <div class="rect-button">
+                    <div
+                        class="challenge-points"
+                        v-if="currentChallenge"
+                    >
+                        {{ currentChallenge.points }}pts
+                    </div>
+                </div>
+                <div class="rect-button">
+                    <div
+                        class="challenge-status"
+                        v-if="currentChallenge"
+                    >
+                        {{ currentChallenge.complete ? 'completed' : 'pending' }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -77,7 +115,30 @@
 
 <script>
 export default {
-    name: 'pokedex'   
+    name: 'pokedex',
+    props: {
+        challenges: Array
+    },
+    data() {
+        return {
+            currentChallengeIndex: 0
+        }
+    },
+    computed: {
+        currentChallenge() {
+            return this.challenges[this.currentChallengeIndex]
+        }
+    },
+    methods: {
+        nextChallenge() {
+            if (this.currentChallengeIndex < this.challenges.length - 1)
+                this.currentChallengeIndex++
+        },
+        prevChallenge() {
+            if (this.currentChallengeIndex > 0)
+                this.currentChallengeIndex--
+        }
+    }
 }
 </script>
 
@@ -257,6 +318,24 @@ export default {
             width: calc(100% - (22px * 2));
             height: calc(100% - (22px * 2) - 50px);
             box-shadow: 0 15px 0 0 inset rgba(100, 100, 100, .2);
+
+            .challenge-image {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    height: 80%;
+                }
+            }
+
+            .locked {
+                filter: contrast(0%);
+            }
         }
 
         .circle-button {
@@ -498,6 +577,15 @@ export default {
         background: #0C1A57;
         border-radius: 15px;
         box-shadow: 0 10px 0 0 inset rgba(100, 100, 100, .2);
+        padding: 1em;
+
+        .challenge-desc {
+            color: white;
+
+            .name {
+                font-weight: bolder;
+            }
+        }
     }
 
     .numpad {
@@ -575,6 +663,10 @@ export default {
             width: 200px;
             border-radius: 10px;
             box-shadow: 0 10px 0 0 inset rgba(100, 100, 100, .2);
+            color: white;
+            font-weight: bolder;
+            text-align: center;
+            line-height: 70px;
         }
 
         .rect-button:last-of-type {
@@ -582,5 +674,4 @@ export default {
         }
     }
 }
-
 </style>
