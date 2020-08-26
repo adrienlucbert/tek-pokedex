@@ -1,0 +1,15 @@
+query StudentsPoints($id: ID!) {
+  team(id: $id) {
+    id,
+    name
+    students {
+      id,
+      login,
+      achievements {
+        challenge {
+          points
+        }
+      }
+    }
+  }
+}

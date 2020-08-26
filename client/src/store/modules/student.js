@@ -8,6 +8,15 @@ export default {
     getters: {
         isLoggedIn(state) {
             return state.id != null
+        },
+        ownTeam(state) {
+            return state.team
+        },
+        ownCity(state) {
+            return state.city
+        },
+        own(state) {
+            return state
         }
     },
     mutations: {

@@ -1,0 +1,21 @@
+query studentAchievements($id: ID!) {
+  student(id: $id) {
+    id,
+    achievements {
+      id,
+      challenge {
+        id,
+        name,
+        description,
+        points
+      },
+      created_at
+    },
+    adjustments {
+      id,
+      points,
+      description,
+      created_at
+    }
+  }
+}

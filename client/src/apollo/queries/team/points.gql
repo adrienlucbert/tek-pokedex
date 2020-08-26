@@ -1,0 +1,19 @@
+query TeamsPoints {
+  teams {
+    id,
+    name,
+    achievements {
+      id,
+      challenge {
+        id,
+        name,
+        points
+      }
+    },
+    adjustments {
+      id,
+      points,
+      description
+    }
+  }
+}

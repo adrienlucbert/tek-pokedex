@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
     mode: 'history',
     routes: [
         { path: '/login', alias: '/', name: 'login', component: () => import('@/pages/login') },
@@ -13,3 +14,14 @@ export default new Router({
         { path: '*', name: '404', component: () => import('@/pages/404') }
     ]
 })
+
+router.beforeEach((to, from, next) => {
+    if (!store.getters.isLoggedIn && to.path !== '/login') {
+        if (from.path !== '/login')
+            router.push('login')
+        return
+    }
+    next()
+})
+
+export default router
