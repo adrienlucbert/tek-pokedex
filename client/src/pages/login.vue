@@ -31,10 +31,15 @@
                     id="username"
                 />
                 <input type="submit" value="LOGIN"/>
+
+
                 <p id="login-info">
                     <fa icon="info-circle" :style="{ color: '#171717' }"/>
-                    Login with you Epitech login (email address).
+                    Login with just your Epitech login (email address).
                 </p>
+        </form>
+        <form >
+            <input @click="loginWithMicrosoft" class="microsoft" type="submit" value="LOGIN with office365"/>
         </form>
         </center>
     </div>
@@ -70,6 +75,10 @@ export default {
         setStatus(type = null, message = null) {
             this.status.type = type
             this.status.message = message
+        },
+        loginWithMicrosoft(e) {
+            e.preventDefault();
+            window.location.href = 'http://localhost:1337/connect/microsoft';
         },
         redirect() {
             this.$router.push('ranking')
