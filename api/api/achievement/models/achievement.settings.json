@@ -12,14 +12,14 @@
     "challenge": {
       "model": "challenge"
     },
-    "students": {
-      "collection": "student",
-      "via": "achievements",
-      "dominant": true
-    },
     "team": {
       "model": "team",
       "via": "achievements"
+    },
+    "users": {
+      "via": "achievements",
+      "plugin": "users-permissions",
+      "collection": "user"
     }
   }
 }

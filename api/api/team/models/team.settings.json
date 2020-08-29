@@ -18,10 +18,6 @@
       "model": "city",
       "via": "teams"
     },
-    "students": {
-      "collection": "student",
-      "via": "team"
-    },
     "achievements": {
       "via": "team",
       "collection": "achievement"
@@ -29,6 +25,11 @@
     "adjustments": {
       "via": "team",
       "collection": "adjustment"
+    },
+    "users": {
+      "via": "team",
+      "plugin": "users-permissions",
+      "collection": "user"
     }
   }
 }

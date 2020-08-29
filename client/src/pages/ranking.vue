@@ -2,21 +2,21 @@
     <div class="ranking-page">
         <city-leaderboard/>
         <team-leaderboard/>
-        <student-details/>
+        <user-details/>
     </div>
 </template>
 
 <script>
 import CityLeaderboard from '@/components/CityLeaderboard'
 import TeamLeaderboard from '@/components/TeamLeaderboard'
-import StudentDetails from '@/components/StudentDetails'
+import UserDetails from '@/components/UserDetails'
 
 export default {
     name: 'ranking-page',
     components: {
         CityLeaderboard,
         TeamLeaderboard,
-        StudentDetails
+        UserDetails
     }
 }
 </script>

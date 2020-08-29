@@ -8,7 +8,7 @@ export default {
     name: 'logout-page',
     mounted() {
         this.$store.dispatch('logout')
-        this.$router.push('login')
+        this.$router.push('/auth/login')
     }
 }
 </script>
