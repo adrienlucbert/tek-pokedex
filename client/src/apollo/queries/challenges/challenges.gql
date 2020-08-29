@@ -1,0 +1,9 @@
+query Challenges {
+  challenges {
+    id,
+    name,
+    description,
+    points,
+    pokemonID
+  }
+}

@@ -22,6 +22,9 @@
       "type": "integer",
       "required": true,
       "default": 0
+    },
+    "pokemonID": {
+      "type": "integer"
     }
   }
 }
