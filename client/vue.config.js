@@ -5,5 +5,8 @@ module.exports = {
             .test(/\.(graphql|gql)$/)
             .use('graphql-tag')
                 .loader('graphql-tag/loader')
+    },
+    devServer: {
+        disableHostCheck: true
     }
 }

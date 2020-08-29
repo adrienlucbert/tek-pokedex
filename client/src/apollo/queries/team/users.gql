@@ -1,10 +1,10 @@
-query StudentsPoints($id: ID!) {
+query UsersPoints($id: ID!) {
   team(id: $id) {
     id,
     name
-    students {
+    users {
       id,
-      login,
+      username,
       achievements {
         challenge {
           points

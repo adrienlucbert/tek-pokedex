@@ -1,5 +1,5 @@
-query studentAchievements($id: ID!) {
-  student(id: $id) {
+query userAchievements($id: ID!) {
+  user(id: $id) {
     id,
     achievements {
       id,
@@ -14,7 +14,6 @@ query studentAchievements($id: ID!) {
     adjustments {
       id,
       points,
-      description,
       created_at
     }
   }

@@ -9,7 +9,7 @@
                     :rank="index + 1"
                     :name="team.name"
                     :points="team.total"
-                    :highlighted="team.id == $store.state.student.team.id"
+                    :highlighted="team.id == $store.getters.user.team.id"
                 />
             </leaderboard>
         </center>

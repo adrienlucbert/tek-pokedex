@@ -4,12 +4,12 @@
             <h2>Team leaderboard</h2>
             <leaderboard>
                 <leaderboard-item
-                    v-for="(student, index) in orderedStudents"
-                    :key="student.id"
+                    v-for="(user, index) in orderedUsers"
+                    :key="user.id"
                     :rank="index + 1"
-                    :name="student.login"
-                    :points="student.total"
-                    :highlighted="student.id == $store.state.student.id"
+                    :name="user.username.replace('@epitech.eu', '')"
+                    :points="user.total"
+                    :highlighted="user.id == $store.getters.user.id"
                 >
                 </leaderboard-item>
             </leaderboard>
@@ -20,7 +20,7 @@
 <script>
 import Leaderboard from '@/components/Leaderboard'
 import LeaderboardItem from '@/components/LeaderboardItem'
-import teamStudentsQuery from '@/apollo/queries/team/students.gql'
+import teamUsersQuery from '@/apollo/queries/team/users.gql'
 
 export default {
     name: 'team-leaderboard',
@@ -34,14 +34,14 @@ export default {
         }
     },
     computed: {
-        orderedStudents() {
+        orderedUsers() {
             if (!this.team)
                 return []
-            return this.team.students.map(student => {
-                student.total = 0
-                for (let achievement of student.achievements)
-                    student.total += Number(achievement.challenge.points)
-                return student
+            return this.team.users.map(user => {
+                user.total = 0
+                for (let achievement of user.achievements)
+                    user.total += Number(achievement.challenge.points)
+                return user
             }).sort((a, b) => b.total - a.total)
         }
     },
@@ -49,9 +49,9 @@ export default {
         team() {
             return {
                 prefetch: true,
-                query: teamStudentsQuery,
+                query: teamUsersQuery,
                 variables: {
-                    id: this.$store.getters.ownTeam.id
+                    id: this.$store.getters.user.team.id
                 }
             }
         }

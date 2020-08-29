@@ -1,117 +1,21 @@
 <template>
     <div class="login-page">
         <center>
-            <form @submit="login">
-                <p
-                    id="status-message"
-                    :class="`status-${status.type}`"
-                    v-if="status.message"
-                >
-                    {{ status.message }}
-                </p>
-                <label for="city">City</label>
-                <select
-                    name="city"
-                    id="city"
-                >
-                    <option
-                        v-for="city in cities"
-                        :key="city.id"
-                        :value="city.id"
-                    >
-                        {{ city.name }}
-                    </option>
-                </select>
-                <label for="username">Username</label>
-                <input
-                    autofocus 
-                    required 
-                    type="text" 
-                    name="username"
-                    id="username"
-                />
-                <input type="submit" value="LOGIN"/>
-
-
-                <p id="login-info">
-                    <fa icon="info-circle" :style="{ color: '#171717' }"/>
-                    Login with just your Epitech login (email address).
-                </p>
-        </form>
-        <form >
-            <input @click="loginWithMicrosoft" class="microsoft" type="submit" value="LOGIN with office365"/>
-        </form>
+            <h1>Sign in</h1>
+            <form :action="PROVIDER_URL" method="GET">
+                <input type="submit" value="Log-in with Office365"/>
+            </form>
         </center>
     </div>
 </template>
 
 <script>
-import citiesQuery from '@/apollo/queries/city/cities.gql'
-import studentsQuery from '@/apollo/queries/students/students.gql'
-
 export default {
     name: 'login-page',
     data() {
         return {
-            cities: [],
-            status: {
-                type: null,
-                message: null
-            }
+            PROVIDER_URL: `http://localhost:1337/connect/microsoft`,
         }
-    },
-    apollo: {
-        cities: {
-            prefetch: true,
-            query: citiesQuery
-        }
-    },
-    mounted() {
-        if (this.$store.getters.isLoggedIn) {
-            this.redirect()
-        }
-    },
-    methods: {
-        setStatus(type = null, message = null) {
-            this.status.type = type
-            this.status.message = message
-        },
-        loginWithMicrosoft(e) {
-            e.preventDefault();
-            window.location.href = 'http://localhost:1337/connect/microsoft';
-        },
-        redirect() {
-            this.$router.push('ranking')
-        },
-        login(e) {
-            e.preventDefault()
-            const validFormat = /^([a-zA-Z0-9]+\.[a-zA-Z0-9]+)(@epitech\.eu)?$/
-            const usernameMatch = e.target.username.value.match(validFormat)
-            if (!usernameMatch) {
-                this.setStatus('error', 'Invalid username format.')
-                return
-            }
-            const username = usernameMatch[1]
-            this.$apollo.query({
-                query: studentsQuery,
-                variables: {
-                    city: e.target.city.value,
-                    login: username
-                }
-            })
-                .then(({ data }) => {
-                    if (!data.studentByLogin) {
-                        this.setStatus('error', 'Unknown username in this city.')
-                        return
-                    }
-                    this.$store.dispatch('login', data.studentByLogin)
-                    this.setStatus('success', 'Logged in successfully.')
-                    this.redirect()
-                })
-                .catch(() => {
-                    this.setStatus('error', 'Internal error. Please try again later.')
-                })
-        } 
     }
 }
 </script>
