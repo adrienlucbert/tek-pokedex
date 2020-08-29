@@ -1,0 +1,20 @@
+query userAchievements($id: ID!) {
+  user(id: $id) {
+    id,
+    achievements {
+      id,
+      challenge {
+        id,
+        name,
+        description,
+        points
+      },
+      created_at
+    },
+    adjustments {
+      id,
+      points,
+      created_at
+    }
+  }
+}

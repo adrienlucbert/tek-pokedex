@@ -1,0 +1,15 @@
+query UsersPoints($id: ID!) {
+  team(id: $id) {
+    id,
+    name
+    users {
+      id,
+      username,
+      achievements {
+        challenge {
+          points
+        }
+      }
+    }
+  }
+}

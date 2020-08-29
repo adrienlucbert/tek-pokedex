@@ -1,8 +1,9 @@
 <template>
     <div id="app">
         <top-bar></top-bar>
-        <router-view></router-view>
-        <!-- TODO: footer -->
+        <main>
+            <router-view></router-view>
+        </main>
     </div>
 </template>
 
@@ -26,6 +27,8 @@ export default {
 
 :root {
     --l-secondary: #0766AD;
+    --l-secondary-light: #a7c9e2;
+    --l-secondary-lightest: #eff8ff;
     
     --hdr-font: Montserrat, 'sans-serif';
     --l-hdr-background: #ffffff;
@@ -45,6 +48,11 @@ body {
     background: var(--l-body-background);
     color: var(--l-body-foreground);
     font-family: var(--body-font);
+}
+
+main {
+    margin-top: 2.2em;
+    padding-top: 3em;
 }
 
 * {

@@ -4,11 +4,13 @@
             <div class="top-bar-left">
                 <bar-item
                     :isActive="$route.path == '/ranking'"
+                    v-show="$store.getters.isLoggedIn"
                 >
                     <router-link to="/ranking">Ranking</router-link>
                 </bar-item>
                 <bar-item
                     :isActive="$route.path == '/challenges'"
+                    v-show="$store.getters.isLoggedIn"
                 >
                     <router-link to="/challenges">Challenges</router-link>
                 </bar-item>
@@ -22,16 +24,16 @@
             </div>
             <div class="top-bar-right">
                 <bar-item
-                    :isActive="$route.path == '/login' || $route.path == '/'"
+                    :isActive="$route.path == '/auth/login'"
                     v-if="!$store.getters.isLoggedIn"
                 >
-                    <router-link to="/login">Login</router-link>
+                    <router-link to="/auth/login">Login</router-link>
                 </bar-item>
                 <bar-item
-                    :isActive="$route.path == '/logout'"
+                    :isActive="$route.path == '/auth/logout'"
                     v-else
                 >
-                    <router-link to="/logout">Logout</router-link>
+                    <router-link to="/auth/logout">Logout</router-link>
                 </bar-item>
             </div>
         </bar>
@@ -53,6 +55,10 @@ export default {
 
 <style scoped>
 .bar {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
     display: flex;
 }
 
