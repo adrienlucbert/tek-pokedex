@@ -46,10 +46,10 @@
                 </div>
                 <div class="rect-button"></div>
                 <div class="cross-button">
-                    <div class="arrow up-arrow" @click="prevChallenge"></div>
+                    <div class="arrow up-arrow clickable" @click="prevChallenge"></div>
                     <div class="arrow left-arrow"></div>
                     <div class="middle-circle"></div>
-                    <div class="arrow down-arrow" @click="nextChallenge"></div>
+                    <div class="arrow down-arrow clickable" @click="nextChallenge"></div>
                     <div class="arrow right-arrow"></div>
                 </div>
             </div>
@@ -102,10 +102,10 @@
                 </div>
                 <div class="rect-button">
                     <div
-                        class="challenge-status"
+                        :class="`challenge-status ${currentChallengeState}`"
                         v-if="currentChallenge"
                     >
-                        {{ currentChallenge.complete ? 'completed' : 'pending' }}
+                        {{ currentChallengeState }}
                     </div>
                 </div>
             </div>
@@ -116,6 +116,19 @@
 <script>
 export default {
     name: 'pokedex',
+    shortcuts: {
+        cancel() {
+            console.log('cancel')
+        },
+        next(e) {
+            e.preventDefault()
+            this.nextChallenge()
+        },
+        prev(e) {
+            e.preventDefault()
+            this.prevChallenge()
+        }
+    },
     props: {
         challenges: Array
     },
@@ -127,6 +140,9 @@ export default {
     computed: {
         currentChallenge() {
             return this.challenges[this.currentChallengeIndex]
+        },
+        currentChallengeState() {
+            return this.currentChallenge.complete ? 'complete' : 'pending'
         }
     },
     methods: {
@@ -419,16 +435,32 @@ export default {
         }
 
         .cross-button {
+            cursor: pointer;
             position: absolute;
             right: 20px;
             bottom: 0;
+            --box-shadow: 2px 4px 0 0 var(--shadow-color);
+
+            --arrows-color: #2f2f3f;
+
+            &:hover {
+                .clickable {
+                    --arrows-color: white;
+                }
+            }
+
+            &:active {
+                right: calc(20px - 2px);
+                bottom: calc(0px - 4px);
+                --box-shadow: none;
+            }
 
             > div {
                 background: #000850;
                 position: absolute;
                 width: 30px;
                 height: 30px;
-                box-shadow: 2px 4px 0 0 var(--shadow-color);
+                box-shadow: var(--box-shadow);
             }
 
             .middle-circle {
@@ -445,7 +477,7 @@ export default {
                 width: 9px;
                 height: 9px;
                 border-radius: 90px;
-                background: #2f2f3f;
+                background: var(--arrows-color);
             }
 
             .arrow::after {
@@ -458,7 +490,7 @@ export default {
                 height: 0;
                 border-top: 9px solid transparent;
                 border-bottom: 9px solid transparent;
-                border-left: 9px solid #2f2f3f;
+                border-left: 9px solid var(--arrows-color);
             }
 
             .left-arrow::after {
@@ -496,7 +528,6 @@ export default {
             .up-arrow::after {
                 transform: translate(-50%, -50%) rotate(-90deg);
             }
-
         }
     }
 }
@@ -671,6 +702,14 @@ export default {
 
         .rect-button:last-of-type {
             left: 240px;
+        }
+
+        .complete {
+            color: #73e073;
+        }
+
+        .pending {
+            color: #ff6b6b;
         }
     }
 }

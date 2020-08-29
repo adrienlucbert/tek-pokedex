@@ -55,5 +55,7 @@ export default {
 </script>
 
 <style scoped>
-
+.challenges-page {
+    margin: auto;
+}
 </style>

@@ -5,6 +5,7 @@ import router from './router'
 import apolloProvider from './apollo'
 
 import './fontawesome'
+import './keybindings'
 
 Vue.config.productionTip = false
 
