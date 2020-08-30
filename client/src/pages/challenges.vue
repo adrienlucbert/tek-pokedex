@@ -46,7 +46,7 @@ export default {
                 prefetch: true,
                 query: teamAchievementsQuery,
                 variables: {
-                    id: this.$store.getters.ownTeam.id
+                    id: this.$store.getters.user.team.id
                 }
             }
         }

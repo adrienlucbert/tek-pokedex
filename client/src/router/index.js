@@ -48,6 +48,7 @@ router.beforeEach((to, from, next) => {
         return
     } else if (to.path === '/') {
         router.push(DEFAULT_ROUTE)
+        return
     }
     next()
 })
